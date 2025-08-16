@@ -2,6 +2,7 @@ package base;
 
 
 import java.io.IOException;
+import java.time.Duration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,6 +12,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import commonMethods.FindElementByText;
+
 import utils.PropertyFileReader;
 
 
@@ -23,6 +25,7 @@ public class CreateDriverObject {
 		{
 		String browserType =PropertyFileReader.getKeyValue("browser");
 
+		String QAurl = PropertyFileReader.getKeyValue("url");
 		if(browserType.equalsIgnoreCase("chrome"))
 		{
 			driver = new ChromeDriver();
@@ -46,6 +49,12 @@ public class CreateDriverObject {
 		}
 		
 		driver.manage().window().maximize();
+		driver.get(QAurl);
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
+
+
+		
 		}
 		catch(Exception e) {
 			

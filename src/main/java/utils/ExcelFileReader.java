@@ -9,17 +9,17 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelFileReader {
     static HashMap<String, String> hmap = null;
 
-    public static HashMap<String, String> getExcelData(String SheetName, String tcID) throws Exception {
+    public static HashMap<String, String> getExcelData(String sheetName, String tcID) throws Exception {
       
     	try{
     		hmap = new HashMap<String, String>();
     	
 
-        String path = System.getProperty("user.dir") + "//TestData//RGdata.xlsx";
+        String path = System.getProperty("user.dir") + "//TestData//TestData.xlsx";
         
         FileInputStream fis = new FileInputStream(path);
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
-        XSSFSheet sheet = workbook.getSheet(SheetName);
+        XSSFSheet sheet = workbook.getSheet(sheetName);
         int lastRowCount = sheet.getLastRowNum();
 
         for (int i = 0; i < lastRowCount; i=i+2)
@@ -56,7 +56,12 @@ public class ExcelFileReader {
     
     	
     	return hmap;
-    	} 
+    	}
+
+	public void setExcelFile(String string, String string2) {
+		// TODO Auto-generated method stub
+		
+	} 
    
     }
     
